@@ -39,4 +39,6 @@ job('build') {
             }
         }
     }
+
+    label('vagrant')
 }
