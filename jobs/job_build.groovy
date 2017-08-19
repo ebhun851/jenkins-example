@@ -1,7 +1,7 @@
 def REMOTE_URL = 'https://github.com/rguruju/jenkins-demo.git'
 def BRANCH = 'master'
 
-job('build') {
+job('jobdsl-helloService-CI') {
     logRotator(-1, 10)
     scm {
         git {
@@ -24,6 +24,7 @@ job('build') {
         gradle {
             tasks('clean build uploadArchives')
             switches('-P username=${BUILD_USER_ID}')
+            switches('-P buildNumber=${BUILD_NUMBER}')
             switches('--stacktrace -i')
             useWrapper(true)
         }
